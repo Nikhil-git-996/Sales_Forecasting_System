@@ -131,8 +131,6 @@ All features are derived from values **strictly before** the target date (no lea
 |──────── TRAIN (all but last 8 weeks) ────────|── VAL (8w) ──|
 ```
 
----
-
 ## Models Implemented
 
 ### 1 · SARIMA
@@ -157,11 +155,8 @@ All features are derived from values **strictly before** the target date (no lea
 - EarlyStopping (patience=10) on 10% validation split
 - Recursive multi-step forecasting
 
----
-
 ## Model Selection Strategy
 
-```
 For each state:
   1. Train all 4 models on training split
   2. Predict 8 validation weeks
@@ -170,9 +165,23 @@ For each state:
   5. Re-train winner on FULL series
   6. Generate 8-week ahead forecast
   7. Persist model + forecast to artifacts/
-```
 
----
+## Data Splitting Strategy
+
+The last 8 weeks are used as validation data.
+
+Training data: All data before last 8 weeks  
+Validation data: Last 8 weeks  
+
+This avoids data leakage and preserves temporal order.
+
+## Limitations
+
+- LSTM training time is high for large datasets
+- SARIMA can be slow due to parameter tuning
+- XGBoost requires careful feature engineering
+- No real-time data ingestion (batch-based system)
+
 
 ## API Reference
 
