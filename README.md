@@ -1,6 +1,5 @@
 # 🏬 End-to-End Sales Forecasting System
-
-> **Assignment – Data Science | MicroGCC Apprenticeship**  
+  
 > Forecast the **next 8 weeks of beverage sales** for each US state using four ML models and serve predictions via a production-ready **FastAPI** REST service.
 
 ---
