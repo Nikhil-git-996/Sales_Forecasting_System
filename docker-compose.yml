@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  forecasting-api:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./artifacts:/app/artifacts
+      - ./data:/app/data
+    environment:
+      - DATA_PATH=data/Forecasting_Case-_Study.xlsx
+      - ARTIFACTS_DIR=artifacts
+      - N_FORECAST=8
+    restart: unless-stopped
